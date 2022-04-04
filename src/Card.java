@@ -10,19 +10,32 @@ public class Card {
     }
 
     /**
-     * Compare cards.
+     * Compare cards. Assume that suits are before ranks and the lowest card is 2 and the highest ace.
      *
      * @param card second card
      * @return Return +1 if given card is lesser, -1 when greater and 0 if equals.
      */
     public int compareTo(Card card) {
+
         if (this.suit > card.suit) {
             return 1;
         } else if (this.suit < card.suit) {
             return -1;
-        } else if (this.rank > card.rank) {
+        }
+        int cardRank = this.rank;
+        int compareRank = card.rank;
+        int aceRank = 14;
+
+        if (this.rank == 1) {
+            cardRank = aceRank;
+        }
+        if (card.rank == 1) {
+            compareRank = aceRank;
+        }
+
+        if (cardRank > compareRank) {
             return 1;
-        } else if (this.rank < card.rank) {
+        } else if (cardRank < compareRank) {
             return -1;
         }
         return 0;
@@ -57,6 +70,7 @@ public class Card {
     /**
      * Instance method
      * @return Index of this object in sorted deck.
+     *
      */
     public int position() {
         return this.suit * 13 + this.rank - 1;

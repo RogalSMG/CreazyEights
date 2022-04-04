@@ -1,7 +1,7 @@
 public class Main {
 
     public static void main(String[] args) {
-        Card card = new Card(12,1);
+        Card card = new Card(1,1);
         Card card1 = new Card(1,0);
         Card[] cards = Search.makeDeck();
         Search.displayCards(cards);
@@ -13,5 +13,6 @@ public class Main {
         System.out.println(Search.binarySearchRecursion(cards,card,0,cards.length));
         System.out.println("---");
         System.out.println(card1.position());
+        System.out.println("---");
     }
 }

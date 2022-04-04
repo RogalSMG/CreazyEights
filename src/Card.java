@@ -37,17 +37,6 @@ public class Card {
         return (this.rank == card.rank && this.suit == card.suit);
     }
 
-    public static Card[] makingDeck() {
-        Card[] deck = new Card[52];
-        int ii = 0;
-        for (int i = 0; i < SUITS.length; i++) {
-            for (int j = 0; j < RANKS.length - 1; j++) {
-                deck[ii] = new Card(j,i);
-            }
-        }
-        return deck;
-    }
-
     /**
      * Getter to rank
      * @return int

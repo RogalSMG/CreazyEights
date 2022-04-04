@@ -23,8 +23,8 @@ public class Card {
     }
 
     /**
-     * Check if given card obj is equal to this.
-     * If are equals return true, else false.
+     * <p>Check if given card obj is equal to this.</p>
+     * If are equals return true, if else false.
      * @param card checked card
      * @return boolean
      */

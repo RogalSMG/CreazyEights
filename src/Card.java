@@ -10,9 +10,10 @@ public class Card {
     }
 
     /**
-     * Compare cards, return +1 if given card is lesser, -1 when greater and 0 if equals.
+     * Compare cards.
+     *
      * @param card second card
-     * @return int
+     * @return Return +1 if given card is lesser, -1 when greater and 0 if equals.
      */
     public int compareTo(Card card) {
         if (this.suit > card.suit) {
@@ -37,20 +38,9 @@ public class Card {
         return (this.rank == card.rank && this.suit == card.suit);
     }
 
-    public static Card[] makingDeck() {
-        Card[] deck = new Card[52];
-        int ii = 0;
-        for (int i = 0; i < SUITS.length; i++) {
-            for (int j = 0; j < RANKS.length - 1; j++) {
-                deck[ii] = new Card(j,i);
-            }
-        }
-        return deck;
-    }
-
     /**
      * Getter to rank
-     * @return int
+     * @return Index with represent rank in String[] RANKS.
      */
     public int getRank() {
         return rank;
@@ -58,10 +48,18 @@ public class Card {
 
     /**
      * Getter to suit
-     * @return int
+     * @return Index with represent suit in String[] SUIT.
      */
     public int getSuit() {
         return suit;
+    }
+
+    /**
+     * Instance method
+     * @return Index of this object in sorted deck.
+     */
+    public int position() {
+        return this.suit * 13 + this.rank - 1;
     }
 
     /**

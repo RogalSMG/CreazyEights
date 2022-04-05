@@ -61,7 +61,7 @@ public class Card {
 
     /**
      * Getter to suit
-     * @return Index with represent suit in String[] SUIT.
+     * @return Index which represent suit in String[] SUIT.
      */
     public int getSuit() {
         return suit;

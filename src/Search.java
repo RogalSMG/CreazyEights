@@ -39,7 +39,7 @@ public class Search {
     }
 
     /**
-     * Binary search.
+     * Binary search. Work only if given array is sorted according to compareTo method.
      *
      * @param cards array to search
      * @param card  obj to find
@@ -101,4 +101,5 @@ public class Search {
             System.out.println(card);
         }
     }
+
 }

@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,6 +26,14 @@ class PokerTest {
         assertAll(
                 () -> assertTrue(Poker.hasFlush(Poker.suitHist(cards2))),
                 () -> assertFalse(Poker.hasFlush(Poker.suitHist(cards1)))
+        );
+    }
+
+    @Test
+    void testRankHist() {
+        assertAll(
+                () -> assertArrayEquals(new int[]{0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}, Poker.rankHist(cards)),
+                () -> assertArrayEquals(new int[]{0, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Poker.rankHist(cards1))
         );
     }
 }

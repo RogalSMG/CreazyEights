@@ -1,9 +1,12 @@
+/**
+ * This class contain method to compare poker hands
+ */
 public class Poker {
     /**
-     * Method made a suits' histogram of given array.
+     * Method makes a suits' histogram of given array.
      * @param cards array to make histogram
      * @return array of length of number of colors where
-     * number under each index represent amount of card of each color.
+     * value under each index represent amount of card of each color.
      */
     public static int[] suitHist(Card[] cards) {
         int[] hist = new int[Card.SUITS.length];
@@ -25,5 +28,19 @@ public class Poker {
             }
         }
         return false;
+    }
+
+    /**
+     * Method makes a ranks histogram of given string.
+     * @param cards array to make histogram
+     * @return array of length of number of ranks where
+     * value under each index represent amount of card of each rank.
+     */
+    public static int[] rankHist(Card[] cards) {
+        int[] hist = new int[Card.RANKS.length];
+        for (Card card : cards) {
+            hist[card.getRank()]++;
+        }
+        return hist;
     }
 }

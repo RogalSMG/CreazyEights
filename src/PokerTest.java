@@ -9,9 +9,24 @@ class PokerTest {
     Card card3 = new Card(3, 2);
     Card card4 = new Card(1, 1);
     Card card5 = new Card(13, 3);
+    Card card6 = new Card(4, 2);
+    Card card7 = new Card(5, 2);
+    Card card8 = new Card(6, 2);
+    Card card9 = new Card(6, 3);
+    Card card10 = new Card(10, 2);
+    Card card11 = new Card(11, 2);
+    Card card12 = new Card(12, 2);
+    Card card13 = new Card(13, 2);
+    Card card14 = new Card(9, 2);
+
     Card[] cards = Search.makeDeck();
     Card[] cards1 = {card, card1, card2, card3, card4};
     Card[] cards2 = {card, card, card, card, card};
+    Card[] straightAce = {card1, card2, card3, card6, card7};
+    Card[] straightTwo = {card2, card3, card6, card7, card9};
+    Card[] straightTen = {card10, card11, card12, card13, card1};
+    Card[] straightNine = {card14 ,card10, card11, card12, card13};
+    Card[] poker = {card2, card3, card6, card7, card8};
 
     @Test
     void testSuitHist() {
@@ -34,6 +49,18 @@ class PokerTest {
         assertAll(
                 () -> assertArrayEquals(new int[]{0, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4}, Poker.rankHist(cards)),
                 () -> assertArrayEquals(new int[]{0, 3, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, Poker.rankHist(cards1))
+        );
+    }
+
+    @Test
+    void hasStraight() {
+        assertAll(
+                () -> assertFalse(Poker.hasStraight(Poker.rankHist(cards2))),
+                () -> assertFalse(Poker.hasStraight(Poker.rankHist(cards1))),
+                () -> assertTrue(Poker.hasStraight(Poker.rankHist(straightAce))),
+                () -> assertTrue(Poker.hasStraight(Poker.rankHist(straightTwo))),
+                () -> assertTrue(Poker.hasStraight(Poker.rankHist(straightNine))),
+                () -> assertTrue(Poker.hasStraight(Poker.rankHist(straightTen)))
         );
     }
 }

@@ -2,12 +2,14 @@
  * This class contain method to compare poker hands
  */
 public class Poker {
-
+// TODO: 07/04/2022 change methods parameters from int[] to Card[]
+//  and use rankHist or suitHist method inside methods
     /**
      * Method check if given array has value 2 under any index.
      *
      * @param ranks given array
      * @return true if found any 2, otherwise false
+     * @see Poker#wherePair(int[], int)
      */
     public static boolean hasPair(int[] ranks) {
         return wherePair(ranks, 1) >= 0;
@@ -18,8 +20,8 @@ public class Poker {
      *
      * @param ranks given array
      * @param index int value where method start to search, included
-     * @return index of given array where were value 2 founded,
-     * return -1 if method do not find any 2
+     * @return index of given array where were first value 2 founded,
+     * otherwise return -1
      */
     private static int wherePair(int[] ranks, int index) {
         for (int i = index; i < ranks.length; i++) {
@@ -78,6 +80,12 @@ public class Poker {
         return false;
     }
 
+    /**
+     * Check if given array is true to both <code>hasPair</code>
+     * and <code>hahTriple</code>
+     * @param ranks given
+     * @return true if both are true, otherwise false
+     */
     public static boolean hasFullHouse(int[] ranks) {
         return (hasPair(ranks) && hasTriple(ranks));
     }

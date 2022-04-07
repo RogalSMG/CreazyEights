@@ -30,7 +30,7 @@ class SearchTest {
     @Test
     void binarySearch() {
         assertAll(
-                // doesn't work now, cards are sorted in way where aces are the smallest rank.
+                // doesn't work now, cards are sorted in way where aces have the smallest rank.
                 // binarySearch use compareTo method where aces are higher than kings.
                 () -> assertEquals(card.position(), Search.binarySearch(cards, card)),
                 () -> assertEquals(0, Search.binarySearch(cards, card1)),

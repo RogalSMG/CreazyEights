@@ -72,8 +72,7 @@ public class Search {
      * @param high   highest index of cards array
      * @return Index of target card in card array, if it does not found return -1.
      */
-    public static int binarySearchRecursion(Card[] cards, Card target,
-                                            int low, int high) {
+    public static int binarySearchRecursion(Card[] cards, Card target, int low, int high) {
         System.out.println(low + ", " + high);
 
         if (high < low) {
@@ -90,16 +89,4 @@ public class Search {
             return binarySearchRecursion(cards, target, low, mid - 1);
         }
     }
-
-    /**
-     * Print all cards in given array.
-     *
-     * @param cards array of cards.
-     */
-    public static void displayCards(Card[] cards) {
-        for (Card card : cards) {
-            System.out.println(card);
-        }
-    }
-
 }

@@ -8,9 +8,9 @@ public class Main {
         Card card1 = new Card(1,0);
 
         Card[] cards = Search.makeDeck();
-        deck.printCards(deck.getCards());
+        deck.printCards();
         deck.shuffle();
-        deck.printCards(deck.getCards());
+        deck.printCards();
 
         System.out.println("---");
         int result = Search.search(cards,card);
@@ -22,6 +22,6 @@ public class Main {
         System.out.println(card1.position());
         System.out.println("---");
         System.out.println(Arrays.toString(deck.getCards()));
-        System.out.println(deck);
+        deck.printCards();
     }
 }

@@ -9,8 +9,8 @@ public class CardTable extends Canvas {
     private final Image cardRevers;
 
     /**
-     * Tworzy obiekt klasy CardTable.
-     * cardset to nazwa folderu, który zawiera grafiki przedstawiające karty.
+     *
+     * @param cardset path to folder with images
      */
     public CardTable(String cardset) {
         setBackground(new Color(0x088A4B));
@@ -18,7 +18,7 @@ public class CardTable extends Canvas {
         // set image for cards reverse
         cardRevers = new ImageIcon(cardset + "/back001.gif").getImage();
 
-        // utwórz dwuwymiarową tablicę grafik kart
+        // set two dimension array
         images = new Image[14][4];
         String suits = "cdhs";
 
@@ -32,19 +32,14 @@ public class CardTable extends Canvas {
             }
         }
 
-        // pobierz szerokość i wysokość kart
-        // i ustaw odpowiednie wymiary ramki
+
+        // set frame size
         cardWidth = images[1][0].getWidth(null);
         cardHeight = images[1][0].getHeight(null);
-
-        // ustaw wymiary tymczasowo, aby otrzymać wstawki
         setTableSize(14, 4);
     }
 
-    /**
-     * Ustawia wielkość tablicy.
-     * x oraz y są wyrażone w jednostkach szerokości i wysokości karty.
-     */
+
     public void setTableSize(double x, double y) {
         setSize((int) (x * cardWidth),
                 (int) (y * cardHeight));

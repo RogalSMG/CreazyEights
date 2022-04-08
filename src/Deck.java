@@ -49,6 +49,9 @@ public class Deck {
         this.cards[j] = temp;
     }
 
+    /**
+     * Sorting given array.
+     */
     public void selectionSort() {
         for (int i = 0; i < cards.length; i++) {
             int lowest = findLowestCard(i, cards.length);
@@ -56,6 +59,13 @@ public class Deck {
         }
     }
 
+    /**
+     * Find index of the lowest card in cards field.
+     *
+     * @param low starting index (included)
+     * @param high last index (excluded)
+     * @return index of the lowest card
+     */
     public int findLowestCard(int low, int high) {
         int lowest = low;
         for (int i = low + 1; i < high; i++) {

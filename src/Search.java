@@ -48,7 +48,7 @@ public class Search {
     public static int binarySearch(Card[] cards, Card card) {
         int low = 0;
         int high = cards.length - 1;
-        while (low <= high) {
+        while (low < high) {
             int mid = (low + high) / 2;
             int result = cards[mid].compareTo(card);
 
@@ -88,5 +88,46 @@ public class Search {
         } else {
             return binarySearchRecursion(cards, target, low, mid - 1);
         }
+    }
+
+    /**
+     * Sorting given array. Class method.
+     * @param cards given array
+     */
+    public static void selectionSort(Card[] cards) {
+        for (int i = 0; i < cards.length; i++) {
+            int lowest = findLowestCard(i, cards.length, cards);
+            swapCards(i, lowest, cards);
+        }
+    }
+
+    /**
+     * Find index of the lowest card in given array.
+     *
+     * @param low starting index (included)
+     * @param high last index (excluded)
+     * @param cards given array to search
+     * @return index of the lowest card
+     */
+    private static int findLowestCard(int low, int high, Card[] cards) {
+        int lowest = low;
+        for (int i = low + 1; i < high; i++) {
+            if (cards[lowest].compareTo(cards[i]) > 0) {
+                lowest = i;
+            }
+        }
+        return lowest;
+    }
+
+    /**
+     * Swap places of two Card[] obj in <code>this</code> obj
+     * under i and j index.
+     *  @param i first index
+     * @param j second index
+     */
+    private static void swapCards(int i, int j, Card[] cards) {
+        Card temp = cards[i];
+        cards[i] = cards[j];
+        cards[j] = temp;
     }
 }

@@ -1,4 +1,5 @@
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,13 +15,13 @@ class SearchTest {
     Card[] cards1 = {card, card1, card2, card3, card4};
     Card[] cards2 = {card, card, card, card, card};
 
-    @Test
-    void makeDeck() {
+    @Disabled
+    void testMakeDeck() {
 
     }
 
     @Test
-    void search() {
+    void testSearch() {
         assertAll(
                 () -> assertEquals(card.position(), Search.search(cards, card)),
                 () -> assertEquals(0, Search.search(cards, card1)),
@@ -30,7 +31,8 @@ class SearchTest {
     }
 
     @Test
-    void binarySearch() {
+    void testBinarySearch() {
+
         assertAll(
                 // doesn't work now, cards are sorted in way where aces have the smallest rank.
                 // binarySearch use compareTo method where aces are higher than kings.
@@ -41,11 +43,11 @@ class SearchTest {
         );
     }
 
-    @Test
+    @Disabled
     void binarySearchRecursion() {
     }
 
-    @Test
+    @Disabled
     void displayCards() {
     }
 }

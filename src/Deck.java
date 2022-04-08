@@ -3,7 +3,7 @@ import java.util.Random;
 public class Deck {
     private Card[] cards;
 
-      public Deck() {
+    public Deck() {
         this.cards = Search.makeDeck();
     }
 
@@ -12,12 +12,13 @@ public class Deck {
     }
 
     /**
-     * Shuffle deck by swapiing
+     * Modifying method.
+     * Shuffle deck by swapping card under each index of this Card[] with random index.
      */
     public void shuffle() {
         for (int i = 0; i < cards.length; i++) {
-            int r = pickRandomInt(i, cards.length);
-            swapCards(i , r);
+            int r = pickRandomInt(0, cards.length);
+            swapCards(i, r);
         }
     }
 
@@ -38,6 +39,7 @@ public class Deck {
     /**
      * Swap places of two Card[] obj in <code>this</code> obj
      * under i and j index.
+     *
      * @param i first index
      * @param j second index
      */
@@ -45,6 +47,23 @@ public class Deck {
         Card temp = this.cards[i];
         this.cards[i] = this.cards[j];
         this.cards[j] = temp;
+    }
+
+    public void selectionSort() {
+        for (int i = 0; i < cards.length; i++) {
+            int lowest = findLowestCard(i, cards.length);
+            swapCards(i, lowest);
+        }
+    }
+
+    public int findLowestCard(int low, int high) {
+        int lowest = low;
+        for (int i = low + 1; i < high; i++) {
+            if (cards[lowest].compareTo(cards[i]) > 0) {
+                lowest = i;
+            }
+        }
+        return lowest;
     }
 
     /**
@@ -69,6 +88,7 @@ public class Deck {
     /**
      * Make string of all cards in deck in this object.
      * <p>Pattern [card, card, ...]
+     *
      * @return string contained all cards
      */
     public String toString() {
@@ -87,9 +107,14 @@ public class Deck {
 
     /**
      * Getter of cards field
+     *
      * @return this Card[] field
      */
     public Card[] getCards() {
         return cards;
+    }
+
+    public void setCards(Card[] cards) {
+        this.cards = cards;
     }
 }

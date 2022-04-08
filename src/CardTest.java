@@ -44,7 +44,7 @@ class CardTest {
     }
 
     @Test
-    void position() {
+    void testPosition() {
         assertAll(
                 () -> assertEquals(13, card.position()),
                 () -> assertEquals(0, card1.position()),

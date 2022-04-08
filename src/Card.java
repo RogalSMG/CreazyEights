@@ -16,16 +16,18 @@ public class Card {
      * @return Return +1 if given card is lesser, -1 when greater and 0 if equals.
      */
     public int compareTo(Card card) {
-
+        // compare colors
         if (this.suit > card.suit) {
             return 1;
         } else if (this.suit < card.suit) {
             return -1;
         }
+
+        int aceRank = 14;
         int cardRank = this.rank;
         int compareRank = card.rank;
-        int aceRank = 14;
 
+        //change rank of aces, default 1 to 14, 1 higher than kings
         if (this.rank == 1) {
             cardRank = aceRank;
         }
@@ -33,11 +35,13 @@ public class Card {
             compareRank = aceRank;
         }
 
+        // compare ranks
         if (cardRank > compareRank) {
             return 1;
         } else if (cardRank < compareRank) {
             return -1;
         }
+        // return 0 if equal
         return 0;
     }
 

@@ -2,6 +2,7 @@ public class Card {
     private final int rank;
     private final int suit;
     public static final String[] RANKS = {null, "as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "walet", "dama", "król"};
+    // club, diamond, heart ,spade
     public static final String[] SUITS = {"trefl", "karo", "kier", "pik"};
 
     public Card(int rank, int suit) {

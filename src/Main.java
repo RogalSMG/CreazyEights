@@ -12,10 +12,5 @@ public class Main {
         deck.shuffle();
         deck.printCards();
 
-        System.out.println(Arrays.toString(deck.getCards()));
-        deck.printCards();
-        deck.selectionSort();
-        deck.printCards();
-
     }
 }

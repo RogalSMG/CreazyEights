@@ -2,6 +2,8 @@ import java.util.Random;
 
 public class Deck {
     private Card[] cards;
+    private static final Random random = new Random();
+
 
     public Deck() {
         this.cards = Search.makeDeck();
@@ -36,12 +38,11 @@ public class Deck {
      * origin (inclusive) and the bound (exclusive)
      */
     private static int pickRandomInt(int low, int max) {
-        Random random = new Random();
         return random.nextInt(low, max);
     }
 
     /**
-     * Swap places of two Card[] obj in <code>this</code> obj
+     * Swap places of two Card obj in <code>this</code> obj
      * under i and j index.
      *
      * @param i first index
@@ -106,7 +107,7 @@ public class Deck {
      * @param d2 second Deck
      * @return Deck with merged cards field from params d1 and d2
      */
-    public Deck merge(Deck d1, Deck d2) {
+    public static Deck merge(Deck d1, Deck d2) {
         // new deck
         Deck merge = new Deck(d1.cards.length + d2.cards.length);
         // indexes of d1 and d2
@@ -139,8 +140,8 @@ public class Deck {
     }
 
     /**
-     *
-     * @return
+     * Simplifying merge sort.
+     * @return sorted this deck
      */
     public Deck almostMergeSort() {
         int mid = this.cards.length / 2;
@@ -156,14 +157,17 @@ public class Deck {
      * @return sorted this deck
      */
     public Deck mergeSort() {
+        // base case
         if (this.cards.length == 0 || this.cards.length == 1) {
             return this;
         }
 
+        // making two sub decks
         int mid = this.cards.length / 2 - 1;
         Deck d1 = subDeck(0, mid);
         Deck d2 = subDeck(mid + 1, this.cards.length - 1);
 
+        //recursive calls
         d1 = d1.mergeSort();
         d2 = d2.mergeSort();
 

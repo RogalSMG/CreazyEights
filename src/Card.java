@@ -11,19 +11,12 @@ public class Card {
     }
 
     /**
-     * Compare cards. Assume that suits are before ranks and the lowest card is 2 and the highest ace.
+     * Compare cards ranks. Assume that the lowest card is 2 and the highest ace.
      *
-     * @param card second card
+     * @param card card to compare with
      * @return Return +1 if given card is lesser, -1 when greater and 0 if equals.
      */
-    public int compareTo(Card card) {
-        // compare colors
-        if (this.suit > card.suit) {
-            return 1;
-        } else if (this.suit < card.suit) {
-            return -1;
-        }
-
+    public int compareToRanks(Card card) {
         int aceRank = 14;
         int cardRank = this.rank;
         int compareRank = card.rank;
@@ -47,9 +40,36 @@ public class Card {
     }
 
     /**
+     * Compare cards colors
+     *
+     * @param card to compare with
+     * @return Return +1 if given card is lesser, -1 when greater and 0 if equals.
+     */
+    public int compareToColors(Card card) {
+        return Integer.compare(this.suit, card.suit);
+    }
+
+    /**
+     * Compare cards. Assume that suits are before ranks and the lowest card is 2 and the highest ace.
+     *
+     * @param card to compare with
+     * @return Return +1 if given card is lesser, -1 when greater and 0 if equals.
+     */
+    public int compareTo(Card card) {
+        int color = compareToColors(card);
+
+        if (color != 0) {
+            return color;
+        } else {
+            return compareToRanks(card);
+        }
+    }
+
+    /**
      * <p>Check if given card obj is equal to this.</p>
      * If are equals return true, if else false.
-     * @param card checked card
+     *
+     * @param card to be checked
      * @return boolean
      */
     public boolean equals(Card card) {
@@ -58,6 +78,7 @@ public class Card {
 
     /**
      * Getter to rank
+     *
      * @return Index with represent rank in String[] RANKS.
      */
     public int getRank() {
@@ -66,6 +87,7 @@ public class Card {
 
     /**
      * Getter to suit
+     *
      * @return Index which represent suit in String[] SUIT.
      */
     public int getSuit() {
@@ -74,8 +96,8 @@ public class Card {
 
     /**
      * Instance method
-     * @return Index of this object in sorted deck.
      *
+     * @return Index of this object in sorted deck.
      */
     public int position() {
         return this.suit * 13 + this.rank - 1;
@@ -83,6 +105,7 @@ public class Card {
 
     /**
      * Method return value of card and it's rank.
+     *
      * @return String
      */
     @Override

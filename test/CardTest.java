@@ -11,7 +11,7 @@ class CardTest {
     Card card5 = new Card(13, 3);
 
     @Test
-    void compareTo() {
+    void testCompareTo() {
         assertAll(
                 () -> assertEquals(0, card.compareTo(card)),
                 () -> assertEquals(1, card.compareTo(card1)),

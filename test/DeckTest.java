@@ -1,5 +1,4 @@
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +11,7 @@ class DeckTest {
     Card card3 = new Card(3, 0);
     Card card4 = new Card(4, 0);
     Card card5 = new Card(5, 0);
-    Card[] cards = Search.makeDeck();
+    Card[] cards = Deck.makeDeck();
     Card[] cards1 = {card, card1, card2, card3, card4, card5};
     Card[] cards2 = {card, card, card, card, card};
     Card[] cardsMerge = {card};

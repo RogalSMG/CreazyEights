@@ -19,7 +19,7 @@ class PokerTest {
     Card card13 = new Card(13, 2);
     Card card14 = new Card(9, 2);
 
-    Card[] cards = Search.makeDeck();
+    Card[] cards = Deck.makeDeck();
     Card[] cards1 = {card, card1, card2, card3, card4};
     Card[] cards2 = {card, card, card, card, card};
     Card[] straightAce = {card1, card2, card3, card6, card7};

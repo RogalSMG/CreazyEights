@@ -5,7 +5,7 @@ public class Main {
         Card card = new Card(1, 1);
         Card card1 = new Card(1, 0);
 
-        Card[] cards = Search.makeDeck();
+        Card[] cards = Deck.makeDeck();
         deck.printCards();
         deck.shuffle();
         deck.printCards();

@@ -6,23 +6,6 @@
 public class Search {
 
     /**
-     * Makes an array of all cards.
-     *
-     * @return Card[]
-     */
-    public static Card[] makeDeck() {
-        Card[] cards = new Card[52];
-        int index = 0;
-        for (int i = 0; i < Card.SUITS.length; i++) {
-            for (int j = 1; j < Card.RANKS.length; j++) {
-                cards[index] = new Card(j, i);
-                index++;
-            }
-        }
-        return cards;
-    }
-
-    /**
      * Sequential search.
      *
      * @param cards array of cards obj
@@ -73,7 +56,7 @@ public class Search {
      * @return Index of target card in card array, if it does not found return -1.
      */
     public static int binarySearchRecursion(Card[] cards, Card target, int low, int high) {
-        System.out.println(low + ", " + high);
+        //System.out.println(low + ", " + high);
 
         if (high < low) {
             return -1;

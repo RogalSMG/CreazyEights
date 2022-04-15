@@ -6,7 +6,7 @@ public class Deck {
 
 
     public Deck() {
-        this.cards = Search.makeDeck();
+        this.cards = makeDeck();
     }
 
     public Deck(int n) {
@@ -15,6 +15,23 @@ public class Deck {
 
     public Deck(Card[] cards) {
         this.cards = cards;
+    }
+
+    /**
+     * Makes an array of all cards.
+     *
+     * @return Card[]
+     */
+    public static Card[] makeDeck() {
+        Card[] cards = new Card[52];
+        int index = 0;
+        for (int i = 0; i < Card.SUITS.length; i++) {
+            for (int j = 1; j < Card.RANKS.length; j++) {
+                cards[index] = new Card(j, i);
+                index++;
+            }
+        }
+        return cards;
     }
 
     /**

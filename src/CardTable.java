@@ -10,13 +10,13 @@ public class CardTable extends Canvas {
 
     /**
      *
-     * @param cardset path to folder with images
+     * @param cardSet path to folder with images
      */
-    public CardTable(String cardset) {
+    public CardTable(String cardSet) {
         setBackground(new Color(0x088A4B));
 
         // set image for cards reverse
-        cardRevers = new ImageIcon(cardset + "/back001.gif").getImage();
+        cardRevers = new ImageIcon(cardSet + "/back001.gif").getImage();
 
         // set two dimension array
         images = new Image[14][4];
@@ -27,7 +27,7 @@ public class CardTable extends Canvas {
 
             for (int rank = 1; rank <= 13; rank++) {
                 String s = String.format("%s/%02d%c.gif",
-                        cardset, rank, c);
+                        cardSet, rank, c);
                 images[rank][suit] = new ImageIcon(s).getImage();
             }
         }
@@ -112,8 +112,8 @@ public class CardTable extends Canvas {
         JFrame frame = new JFrame("Card Table");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        String cardset = "E:\\Developer Start\\Java Projekty\\CardGames\\images";
-        Canvas canvas = new CardTable(cardset);
+        String cardSet = "E:\\Developer Start\\Java Projekty\\CardGames\\images";
+        Canvas canvas = new CardTable(cardSet);
         frame.getContentPane().add(canvas); // frame.add(canvas) also works
 
         // show frame

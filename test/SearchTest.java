@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +12,7 @@ class SearchTest {
     Card card4 = new Card(1, 1);
     Card card5 = new Card(13, 3);
     Card card51 = new Card(1, 3);
-    Card[] cards = Search.makeDeck();
+    Card[] cards = Deck.makeDeck();
     Card[] cards1 = {card, card1, card2, card3, card4};
     Card[] cards2 = {card, card, card, card, card};
 
@@ -50,11 +49,19 @@ class SearchTest {
         );
     }
 
-    @Disabled
-    void binarySearchRecursion() {
-    }
-
-    @Disabled
-    void displayCards() {
+    @Test
+    void testBinarySearchRecursion() {
+        Search.selectionSort(cards);
+        Search.selectionSort(cards1);
+        assertAll(
+                // doesn't work if not sorted, cards are sorted by default in way where aces have the smallest rank.
+                // binarySearch use compareTo method where aces are higher than kings.
+                () -> assertEquals(25, Search.binarySearchRecursion(cards, card,0 , cards.length)),
+                () -> assertEquals(12, Search.binarySearchRecursion(cards, card1,0 , cards.length)),
+                () -> assertEquals(0, Search.binarySearchRecursion(cards, card0,0 , cards.length)),
+                () -> assertEquals(50, Search.binarySearchRecursion(cards, card5,0 , cards.length)),
+                () -> assertEquals(0, Search.binarySearchRecursion(cards1, card1,0 , cards1.length)),
+                () -> assertEquals(-1, Search.binarySearchRecursion(cards2, card1,0 , cards2.length))
+        );
     }
 }

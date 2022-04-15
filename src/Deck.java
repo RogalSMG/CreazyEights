@@ -85,7 +85,7 @@ public class Deck {
     /**
      * Find index of the lowest card in cards field.
      *
-     * @param low starting index (included)
+     * @param low  starting index (included)
      * @param high last index (excluded)
      * @return index of the lowest card
      */
@@ -103,12 +103,13 @@ public class Deck {
      * Return <code>Deck</code> object with cards from index low (included) to high (included)
      * by using this object.
      * New object can not be empty
-     * @param low first index
+     *
+     * @param low  first index
      * @param high last index
      * @return <code>Deck</code> object with cards from index low (included) to high (included)
      */
     public Deck subDeck(int low, int high) {
-        Deck sub = new Deck(high - low + 1);
+        Deck sub = new Deck(high - low);
         for (int i = 0; i < sub.cards.length; i++) {
             sub.cards[i] = this.cards[low];
             low++;
@@ -158,12 +159,13 @@ public class Deck {
 
     /**
      * Simplifying merge sort.
+     *
      * @return sorted this deck
      */
     public Deck almostMergeSort() {
         int mid = this.cards.length / 2;
         Deck d1 = subDeck(0, mid);
-        Deck d2 = subDeck(mid +1, this.cards.length - 1);
+        Deck d2 = subDeck(mid, this.cards.length);
         d1.selectionSort();
         d2.selectionSort();
         return merge(d1, d2);
@@ -171,6 +173,7 @@ public class Deck {
 
     /**
      * Merge sort algorithm
+     *
      * @return sorted this deck
      */
     public Deck mergeSort() {
@@ -180,9 +183,9 @@ public class Deck {
         }
 
         // making two sub decks
-        int mid = this.cards.length / 2 - 1;
+        int mid = this.cards.length / 2;
         Deck d1 = subDeck(0, mid);
-        Deck d2 = subDeck(mid + 1, this.cards.length - 1);
+        Deck d2 = subDeck(mid, this.cards.length);
 
         //recursive calls
         d1 = d1.mergeSort();

@@ -1,8 +1,8 @@
 import java.util.Random;
 
-public class Deck {
+public class Deck extends CardCollection {
+
     private Card[] cards;
-    private static final Random random = new Random();
 
 
     public Deck() {
@@ -15,6 +15,19 @@ public class Deck {
 
     public Deck(Card[] cards) {
         this.cards = cards;
+    }
+
+    /**
+     * Constructor of super class
+     * @param label name of deck
+     */
+    public Deck(String label) {
+        super(label);
+        for (int suit = 0; suit <= 3; suit++) {
+            for (int rank = 1; rank <= 13; rank++) {
+                super.cards.add(new Card(rank, suit));
+            }
+        }
     }
 
     /**
@@ -35,17 +48,6 @@ public class Deck {
     }
 
     /**
-     * Modifying method.
-     * Shuffle deck by swapping card under each index of this Card[] with random index.
-     */
-    public void shuffle() {
-        for (int i = 0; i < cards.length; i++) {
-            int r = pickRandomInt(0, cards.length);
-            swapCards(i, r);
-        }
-    }
-
-    /**
      * Returns a pseudo randomly int value between the specified
      * origin (inclusive) and the specified bound (exclusive).
      *
@@ -55,66 +57,8 @@ public class Deck {
      * origin (inclusive) and the bound (exclusive)
      */
     private static int pickRandomInt(int low, int max) {
+        Random random = new Random();
         return random.nextInt(low, max);
-    }
-
-    /**
-     * Swap places of two Card obj in <code>this</code> obj
-     * under i and j index.
-     *
-     * @param i first index
-     * @param j second index
-     */
-    private void swapCards(int i, int j) {
-        Card temp = this.cards[i];
-        this.cards[i] = this.cards[j];
-        this.cards[j] = temp;
-    }
-
-    /**
-     * Modifying method.
-     * Sorting this cards array.
-     */
-    public void selectionSort() {
-        for (int i = 0; i < cards.length; i++) {
-            int lowest = findLowestCard(i, cards.length);
-            swapCards(i, lowest);
-        }
-    }
-
-    /**
-     * Find index of the lowest card in cards field.
-     *
-     * @param low  starting index (included)
-     * @param high last index (excluded)
-     * @return index of the lowest card
-     */
-    public int findLowestCard(int low, int high) {
-        int lowest = low;
-        for (int i = low + 1; i < high; i++) {
-            if (cards[lowest].compareTo(cards[i]) > 0) {
-                lowest = i;
-            }
-        }
-        return lowest;
-    }
-
-    /**
-     * Return <code>Deck</code> object with cards from index low (included) to high (included)
-     * by using this object.
-     * New object can not be empty
-     *
-     * @param low  first index
-     * @param high last index
-     * @return <code>Deck</code> object with cards from index low (included) to high (included)
-     */
-    public Deck subDeck(int low, int high) {
-        Deck sub = new Deck(high - low);
-        for (int i = 0; i < sub.cards.length; i++) {
-            sub.cards[i] = this.cards[low];
-            low++;
-        }
-        return sub;
     }
 
     /**
@@ -155,6 +99,76 @@ public class Deck {
             }
         }
         return merge;
+    }
+
+    /**
+     * Modifying method.
+     * Shuffle deck by swapping card under each index of this Card[] with random index.
+     */
+    public void shuffle() {
+        for (int i = 0; i < cards.length; i++) {
+            int r = pickRandomInt(0, cards.length);
+            swapCards(i, r);
+        }
+    }
+
+    /**
+     * Swap places of two Card obj in <code>this</code> obj
+     * under i and j index.
+     *
+     * @param i first index
+     * @param j second index
+     */
+    public void swapCards(int i, int j) {
+        Card temp = this.cards[i];
+        this.cards[i] = this.cards[j];
+        this.cards[j] = temp;
+    }
+
+    /**
+     * Modifying method.
+     * Sorting this cards array.
+     */
+    public void selectionSort() {
+        for (int i = 0; i < cards.length; i++) {
+            int lowest = indexLowest(i, cards.length);
+            swapCards(i, lowest);
+        }
+    }
+
+    /**
+     * Find index of the lowest card in cards field.
+     *
+     * @param low  starting index (included)
+     * @param high last index (excluded)
+     * @return index of the lowest card
+     */
+    public int indexLowest(int low, int high) {
+        int lowest = low;
+        for (int i = low + 1; i < high; i++) {
+            if (cards[lowest].compareTo(cards[i]) > 0) {
+                lowest = i;
+            }
+        }
+        return lowest;
+    }
+
+    /**
+     * Return <code>Deck</code> object with cards from index low (included) to high (included)
+     * by using this object.
+     * New object can not be empty
+     *
+     * @param low  first index
+     * @param high last index
+     * @return <code>Deck</code> object with cards from index low (included) to high (included)
+     */
+    public Deck subDeck(int low, int high) {
+        Deck sub = new Deck(high - low);
+        for (int i = 0; i < sub.cards.length; i++) {
+            sub.cards[i] = this.cards[low];
+            low++;
+        }
+        return sub;
     }
 
     /**

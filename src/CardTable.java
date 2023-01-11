@@ -9,7 +9,6 @@ public class CardTable extends Canvas {
     private final Image cardRevers;
 
     /**
-     *
      * @param cardSet path to folder with images
      */
     public CardTable(String cardSet) {
@@ -32,13 +31,29 @@ public class CardTable extends Canvas {
             }
         }
 
-
         // set frame size
         cardWidth = images[1][0].getWidth(null);
         cardHeight = images[1][0].getHeight(null);
         setTableSize(14, 4);
     }
 
+    /**
+     * Main function inside <code>CardTable</code> class
+     *
+     * @param args cmd array :java Main
+     */
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Card Table");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        String cardSet = "E:\\Developer Start\\Java Projekty\\CardGames\\images";
+        Canvas canvas = new CardTable(cardSet);
+        frame.getContentPane().add(canvas); // frame.add(canvas) also works
+
+        // show frame
+        frame.pack();
+        frame.setVisible(true);
+    }
 
     public void setTableSize(double x, double y) {
         setSize((int) (x * cardWidth),
@@ -101,24 +116,6 @@ public class CardTable extends Canvas {
                 drawCard(g, rank, suit, x, y);
             }
         }
-    }
-
-    /**
-     * Main function inside <code>CardTable</code> class
-     *
-     * @param args cmd array :java Main
-     */
-    public static void main(String[] args) {
-        JFrame frame = new JFrame("Card Table");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        String cardSet = "E:\\Developer Start\\Java Projekty\\CardGames\\images";
-        Canvas canvas = new CardTable(cardSet);
-        frame.getContentPane().add(canvas); // frame.add(canvas) also works
-
-        // show frame
-        frame.pack();
-        frame.setVisible(true);
     }
 
 }

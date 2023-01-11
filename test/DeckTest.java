@@ -21,11 +21,11 @@ class DeckTest {
     Deck deck = new Deck();
 
     @Test
-    void testFindLowestCard() {
+    void testIndexLowest() {
         deck.setCards(cards1);
-        assertEquals(2, deck.findLowestCard(0, deck.getCards().length));
+        assertEquals(2, deck.indexLowest(0, deck.getCards().length));
         deck.selectionSort();
-        assertEquals(0, deck.findLowestCard(0, deck.getCards().length));
+        assertEquals(0, deck.indexLowest(0, deck.getCards().length));
     }
 
     @Test

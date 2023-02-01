@@ -3,14 +3,14 @@ import java.util.Random;
 
 public class CardCollection {
     private String label;
-    protected ArrayList<Card> cards;
+    protected ArrayList<Card> cardsArr;
 
     public CardCollection() {
     }
 
     public CardCollection(String label) {
         this.label = label;
-        this.cards = new ArrayList<>();
+        this.cardsArr = new ArrayList<>();
     }
 
     public String getLabel() {
@@ -18,40 +18,40 @@ public class CardCollection {
     }
 
     public void addCard(Card card) {
-        this.cards.add(card);
+        this.cardsArr.add(card);
     }
 
     public Card popCard(int i) {
-        return this.cards.remove(i);
+        return this.cardsArr.remove(i);
     }
 
     /**
      * @return last card in collection
      */
     public Card popCard() {
-        return popCard(cards.size() - 1);
+        return popCard(cardsArr.size() - 1);
     }
 
     public int size() {
-        return this.cards.size();
+        return this.cardsArr.size();
     }
 
     public boolean isEmpty() {
-        return cards.size() == 0;
+        return cardsArr.size() == 0;
     }
 
     public Card getCard(int i) {
-        return cards.get(i);
+        return cardsArr.get(i);
     }
 
     public Card getLastCard() {
-        return cards.get(cards.size() - 1);
+        return cardsArr.get(cardsArr.size() - 1);
     }
 
     public void deal(CardCollection that, int i) {
         for (int j = 0; j < i; j++) {
             Card card = popCard();
-            that.cards.add(card);
+            that.cardsArr.add(card);
         }
     }
 
@@ -61,15 +61,15 @@ public class CardCollection {
     }
 
     public void swapCards(int i, int j) {
-        Card temp = cards.get(i);
-        cards.set(i, cards.get(j));
-        cards.set(j, temp);
+        Card temp = cardsArr.get(i);
+        cardsArr.set(i, cardsArr.get(j));
+        cardsArr.set(j, temp);
     }
 
     public void shuffle() {
         Random ran = new Random();
-        for (int i = 0; i < cards.size() - 1; i++) {
-            int j = ran.nextInt(cards.size() - 1);
+        for (int i = 0; i < cardsArr.size() - 1; i++) {
+            int j = ran.nextInt(cardsArr.size() - 1);
             swapCards(i, j);
         }
     }

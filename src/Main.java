@@ -2,14 +2,26 @@ public class Main {
 
     public static void main(String[] args) {
         Deck deck = new Deck();
-        Card card = new Card(1, 1);
-        Card card1 = new Card(1, 0);
 
-        Card[] cards = Deck.makeDeck();
         deck.printCards();
         deck.shuffle();
         deck.printCards();
 
-        Deck.merge(deck, deck);
+        Deck afterMerge = Deck.merge(deck, deck);
+        afterMerge.printCards();
+        main2(args);
+    }
+    public static void main2(String[] args) {
+        Deck deck = new Deck("Talia");
+        deck.shuffle();
+
+        Hand hand = new Hand("Układ");
+        deck.deal(hand, 5);
+        hand.display();
+
+        Hand drawPile = new Hand("Stos ciągnięcia");
+        deck.dealAll(drawPile);
+        System.out.printf("Stos ciągnięcia zawiera %d kart.\n",
+                drawPile.size());
     }
 }

@@ -4,7 +4,6 @@ public class Deck extends CardCollection {
 
     private Card[] cards;
 
-
     public Deck() {
         this.cards = makeDeck();
     }
@@ -25,7 +24,7 @@ public class Deck extends CardCollection {
         super(label);
         for (int suit = 0; suit <= 3; suit++) {
             for (int rank = 1; rank <= 13; rank++) {
-                super.cards.add(new Card(rank, suit));
+                super.cardsArr.add(new Card(rank, suit));
             }
         }
     }

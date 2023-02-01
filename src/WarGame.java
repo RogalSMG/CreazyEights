@@ -28,7 +28,7 @@ public class WarGame {
             } else if (diff < 0) {
                 p2.addCard(stock);
             } else {
-                if (p1.size() > 4 || p2.size() > 4) {
+                if (p1.size() > 4 && p2.size() > 4) {
                     for (int i = 0; i < 3; i++) {
                         stock.addCard(p1.popCard());
                         stock.addCard(p2.popCard());

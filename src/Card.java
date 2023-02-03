@@ -1,9 +1,9 @@
 public class Card {
-    private final int rank;
-    private final int suit;
     public static final String[] RANKS = {null, "as", "2", "3", "4", "5", "6", "7", "8", "9", "10", "walet", "dama", "król"};
     // club, diamond, heart ,spade
     public static final String[] SUITS = {"trefl", "karo", "kier", "pik"};
+    private final int rank;
+    private final int suit;
 
     public Card(int rank, int suit) {
         this.rank = rank;
@@ -21,7 +21,7 @@ public class Card {
         int cardRank = this.rank;
         int compareRank = card.rank;
 
-        //change rank of aces, default 1 to 14, one above the kings
+        //change rank of aces from default 1 to 14, one above the kings
         if (this.rank == 1) {
             cardRank = aceRank;
         }
@@ -29,9 +29,8 @@ public class Card {
             compareRank = aceRank;
         }
 
-
         // return 0 if equal
-        return Integer.compare(compareRank, cardRank);
+        return Integer.compare(cardRank, compareRank);
     }
 
     /**

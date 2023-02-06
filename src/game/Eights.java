@@ -1,13 +1,20 @@
+package game;
+
+import eights.player.EightsPlayer;
+import eights.player.EightsEightsPlayer;
+import eights.player.HighestRankEightsPlayer;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Simulate Crazy Eight Game <p>
  * Basics rule you can find under following address:
- * <a href="https://en.wikipedia.org/wiki/Crazy_Eights">Crazy Eights</a>
+ * <a href="https://en.wikipedia.org/wiki/Crazy_Eights">Crazy game.Eights</a>
  */
 public class Eights {
-    private final Player playerOne;
-    private final Player playerTwo;
+    final ArrayList<Player> players;
+
     private final Hand drawPile;
     private final Hand discardPile;
     private final Scanner in;
@@ -16,15 +23,24 @@ public class Eights {
      * Basic constructor which initialize starting conditions of game
      */
     public Eights() {
-        Deck deck = new Deck("Deck");
+        Deck deck = new Deck("game.Deck");
         deck.shuffle();
 
-        int startingHandSize = 5;
-        playerOne = new Player("Daniel");
+        players = new ArrayList<>();
+
+        int startingHandSize = 10;
+        EightsPlayer playerOne = new EightsPlayer("Daniel");
         deck.deal(playerOne.getHand(), startingHandSize);
 
-        playerTwo = new Player("Johnny");
+        EightsEightsPlayer playerTwo = new EightsEightsPlayer("Johnny");
         deck.deal(playerTwo.getHand(), startingHandSize);
+
+        HighestRankEightsPlayer playerThree = new HighestRankEightsPlayer("Unexperienced");
+        deck.deal(playerThree.getHand(), startingHandSize);
+
+        players.add(playerOne);
+        players.add(playerTwo);
+        players.add(playerThree);
 
         drawPile = new Hand("Draw Pile");
         deck.dealAll(drawPile);
@@ -33,6 +49,7 @@ public class Eights {
         discardPile.addCard(drawPile.popCard());
 
         in = new Scanner(System.in);
+
     }
 
     /**
@@ -41,8 +58,12 @@ public class Eights {
      * @return true if some player hand in empty
      */
     public boolean isDone() {
-        return playerOne.getHand().isEmpty()
-                || playerTwo.getHand().isEmpty();
+        for (Player player : players) {
+            if (player.getHand().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -56,7 +77,7 @@ public class Eights {
     }
 
     /**
-     * Drawing top card from drawing card
+     * Drawing top card from drawing pile
      *
      * @return top card of drawing pile
      */
@@ -74,20 +95,23 @@ public class Eights {
      * @return next player
      */
     public Player nextPlayer(Player current) {
-        if (current == playerOne) {
-            return playerTwo;
-        } else return playerOne;
+        if (current == players.get(players.size() - 1)) {
+            return players.get(0);
+        }
+        return players.get(players.indexOf(current) + 1);
     }
 
     /**
      * display basic info about current state of game
      */
     public void displayState() {
-        playerOne.display();
-        playerTwo.display();
-        discardPile.display();
+        for (Player player : players) {
+            player.getHand().displayInRow();
+        }
+
+        discardPile.displayInRow();
         System.out.printf("Drawing pile has a: %d cards\n", drawPile.size());
-        in.nextLine();
+        // in.nextLine();
     }
 
     /**
@@ -96,26 +120,32 @@ public class Eights {
      * @param player current player
      */
     public void takeTurn(Player player) {
-        Card prev = discardPile.getLastCard();
-        Card next = player.play(this, prev);
+        Card prev = discardPile.getLastCard(); // check last card on discard pile
+        Card next = player.play(this, prev); // play next possible card from current player deck
         discardPile.addCard(next);
 
-        System.out.printf("Player %s play %s\n", player.getName(), next);
+        System.out.printf("game.Player %s play: %s \n", player.getName(), next);
+        System.out.println();
     }
 
     /**
      * Method which start game until one of the players will have empty
      */
     public void playGame() {
-        Player player = playerOne;
+        Player player = players.get(0);
 
         while (!isDone()) {
             displayState();
-            takeTurn(playerOne);
+            takeTurn(player);
             player = nextPlayer(player);
         }
 
-        playerOne.displayScore();
-        playerTwo.displayScore();
+        for (Player x : players) {
+            x.displayScore();
+        }
+    }
+
+    public Player currentPlayer() {
+        return null;
     }
 }

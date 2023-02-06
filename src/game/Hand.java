@@ -1,3 +1,5 @@
+package game;
+
 public class Hand extends CardCollection {
 
     /**
@@ -9,7 +11,7 @@ public class Hand extends CardCollection {
     }
 
     /**
-     * Method display name of Hand and cards inside
+     * Method display name of game.Hand and cards inside
      */
     public void display() {
         System.out.println(getLabel() + ": ");
@@ -17,5 +19,10 @@ public class Hand extends CardCollection {
             System.out.println(getCard(i));
         }
         System.out.println();
+    }
+
+    public void displayInRow() {
+        System.out.print(getLabel() + " cards:");
+        showCards();
     }
 }

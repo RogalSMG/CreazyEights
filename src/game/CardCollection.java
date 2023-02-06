@@ -1,9 +1,11 @@
+package game;
+
 import java.util.ArrayList;
 import java.util.Random;
 
-public class CardCollection {
+public abstract class CardCollection {
     private final String label;
-    protected ArrayList<Card> cards;
+    public ArrayList<Card> cards;
 
     public CardCollection(String label) {
         this.label = label;
@@ -11,19 +13,19 @@ public class CardCollection {
     }
 
     /**
-     * Give name of this CardCollection
+     * Give name of this game.CardCollection
      *
      * @return String representation of name
      */
-    public String getLabel() {
+    protected String getLabel() {
         return label;
     }
 
     /**
      * Wrapper method for <code>ArrayList</code> .add() method
      *
-     * @param card given <code>Card</code> obj in order to add to <code>cards</code>
-     *             field which is an object of <code>ArrayList</code> class parametrized by <code>Card</code> class
+     * @param card given <code>game.Card</code> obj in order to add to <code>cards</code>
+     *             field which is an object of <code>ArrayList</code> class parametrized by <code>game.Card</code> class
      */
     public void addCard(Card card) {
         this.cards.add(card);
@@ -33,7 +35,7 @@ public class CardCollection {
      * Return specified card from a list
      *
      * @param i index of card
-     * @return Card object under i index
+     * @return game.Card object under i index
      */
     public Card popCard(int i) {
         return this.cards.remove(i);
@@ -47,6 +49,10 @@ public class CardCollection {
     public Card popCard() {
         int i = cards.size() - 1;
         return popCard(i);
+    }
+
+    public void remove(Card card) {
+        cards.remove(card);
     }
 
     /**
@@ -77,9 +83,9 @@ public class CardCollection {
     }
 
     /**
-     * Method give last Card obj
+     * Method give last game.Card obj
      *
-     * @return last Card obj in
+     * @return last game.Card obj in
      */
     public Card getLastCard() {
         return getCard(cards.size() - 1);
@@ -88,7 +94,7 @@ public class CardCollection {
     /**
      * Method which deal specified amount of cards to that obj
      *
-     * @param that CardCollection object where cards will be added
+     * @param that game.CardCollection object where cards will be added
      * @param i    amount of cards
      */
     public void deal(CardCollection that, int i) {
@@ -99,7 +105,7 @@ public class CardCollection {
     }
 
     /**
-     * Method which deal adda all cards from given {@code CardCollection} to that obj
+     * Method which deal adda all cards from given {@code game.CardCollection} to that obj
      *
      * @param that given card collection where cards will be added
      */

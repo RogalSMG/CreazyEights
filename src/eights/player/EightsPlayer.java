@@ -2,7 +2,7 @@ package eights.player;
 
 import eights.card.EightsCard;
 import game.Card;
-import game.Eights;
+import eights.Eights;
 import game.Player;
 
 import java.util.ArrayList;

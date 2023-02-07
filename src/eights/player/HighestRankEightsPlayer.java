@@ -1,11 +1,11 @@
 package eights.player;
 
 import game.Card;
-import game.Eights;
+import eights.Eights;
 
 import java.util.ArrayList;
 
-public class HighestRankEightsPlayer extends EightsPlayer{
+public class HighestRankEightsPlayer extends EightsPlayer {
     public HighestRankEightsPlayer(String name) {
         super(name);
     }

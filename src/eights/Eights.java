@@ -1,8 +1,12 @@
-package game;
+package eights;
 
 import eights.player.EightsPlayer;
 import eights.player.EightsEightsPlayer;
 import eights.player.HighestRankEightsPlayer;
+import game.Card;
+import game.Deck;
+import game.Hand;
+import game.Player;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,10 +14,10 @@ import java.util.Scanner;
 /**
  * Simulate Crazy Eight Game <p>
  * Basics rule you can find under following address:
- * <a href="https://en.wikipedia.org/wiki/Crazy_Eights">Crazy game.Eights</a>
+ * <a href="https://en.wikipedia.org/wiki/Crazy_Eights">Crazy eights.Eights</a>
  */
 public class Eights {
-    final ArrayList<Player> players;
+    public final ArrayList<Player> players;
 
     private final Hand drawPile;
     private final Hand discardPile;
@@ -35,7 +39,7 @@ public class Eights {
         EightsEightsPlayer playerTwo = new EightsEightsPlayer("Johnny");
         deck.deal(playerTwo.getHand(), startingHandSize);
 
-        HighestRankEightsPlayer playerThree = new HighestRankEightsPlayer("Unexperienced");
+        HighestRankEightsPlayer playerThree = new HighestRankEightsPlayer("Inexperienced");
         deck.deal(playerThree.getHand(), startingHandSize);
 
         players.add(playerOne);

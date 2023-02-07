@@ -1,5 +1,5 @@
 package game;
-import eights.hand.EightsHand;
+import eights.Eights;
 
 public class Test {
     public static void main(String[] args) {

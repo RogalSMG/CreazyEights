@@ -1,5 +1,6 @@
 package game;
 
+import eights.Eights;
 import eights.card.EightsCard;
 import eights.hand.EightsHand;
 
